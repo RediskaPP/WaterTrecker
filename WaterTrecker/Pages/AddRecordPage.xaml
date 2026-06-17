@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.AddRecordPage"
+             Title="AddRecordPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+
+            <!-- Объём: слайдер -->
+            <Label Text="Объём (мл)"/>
+            <Slider x:Name="SliderAmount"
+                    Minimum="50"
+                    Maximum="1000"
+                    Value="250"
+                    ValueChanged="OnSliderChanged"/>
+            <Label x:Name="LblAmount" Text="250 мл"/>
+
+            <!-- Объём: ввод вручную -->
+            <Label Text="Или введите вручную"/>
+            <Entry x:Name="EntryAmount"
+                   Placeholder="например, 330"
+                   Keyboard="Numeric"
+                   TextChanged="OnEntryChanged"/>
+
+            <!-- Тип напитка -->
+            <Label Text="Тип напитка"/>
+            <CollectionView x:Name="DrinkList"
+                            SelectionMode="Single"
+                            SelectionChanged="OnDrinkSelected"
+                            HeightRequest="60">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Icon}" FontSize="24" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Name}" FontSize="12" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Время -->
+            <Label Text="Время"/>
+            <TimePicker x:Name="TimePicker"/>
+
+            <!-- Кнопка сохранить -->
+            <Button Text="Сохранить"
+                    Clicked="OnSave"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

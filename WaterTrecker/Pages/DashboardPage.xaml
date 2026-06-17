@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.DashboardPage"
+             Title="Главная">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+
+            <!-- Дата -->
+            <Label x:Name="LblDate"/>
+
+            <!-- Прогресс -->
+            <Label x:Name="LblCurrent" Text="0 мл"/>
+            <Label x:Name="LblGoal" Text="из 2500 мл"/>
+            <ProgressBar x:Name="ProgressBar" Progress="0"/>
+
+            <!-- Мотивационное сообщение -->
+            <Label x:Name="LblMotivation"/>
+
+            <!-- Быстрое добавление -->
+            <Label Text="Быстро добавить"/>
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="150 мл" Clicked="OnAdd150"/>
+                <Button Text="250 мл" Clicked="OnAdd250"/>
+                <Button Text="500 мл" Clicked="OnAdd500"/>
+            </HorizontalStackLayout>
+
+            <!-- Записи за сегодня -->
+            <Label Text="Сегодня"/>
+            <Label x:Name="LblEmpty"
+                   Text="Нет записей. Добавь первый стакан!"
+                   IsVisible="True"/>
+
+            <CollectionView x:Name="WaterLogList"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0,8" ColumnSpacing="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                   Text="{Binding Icon}"
+                                   FontSize="24"
+                                   VerticalOptions="Center"/>
+
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding DrinkType}" FontAttributes="Bold"/>
+                                <Label Text="{Binding TimeDisplay}" TextColor="Gray" FontSize="12"/>
+                            </VerticalStackLayout>
+
+                            <Label Grid.Column="2"
+                                   Text="{Binding Amount, StringFormat='{0} мл'}"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"/>
+
+                            <Button Grid.Column="3"
+                                    Text="✕"
+                                    CommandParameter="{Binding Id}"
+                                    Clicked="OnDelete"
+                                    VerticalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
