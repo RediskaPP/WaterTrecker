@@ -1,64 +1,120 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="WaterTrecker.Pages.HistoryPage"
-    Title="История">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.HistoryPage"
+             Title="История">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="16">
 
-        <Label
-            Text="История записей"
-            FontSize="24"
-            FontAttributes="Bold"/>
+            <!-- ЗАГОЛОВОК -->
+            <Label Text="История"
+                   Style="{StaticResource DisplayLabel}"
+                   HorizontalTextAlignment="Start"
+                   FontSize="28"/>
 
-        <DatePicker
-            x:Name="DatePickerHistory"
-            DateSelected="OnDateSelected"/>
+            <!-- ВЫБОР ДАТЫ -->
+            <Border Style="{StaticResource Card}" Padding="16,8">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Grid.Column="0"
+                           Text="📅"
+                           FontSize="20"
+                           VerticalOptions="Center"
+                           Margin="0,0,12,0"/>
+                    <DatePicker Grid.Column="1"
+                                x:Name="DatePickerHistory"
+                                DateSelected="OnDateSelected"
+                                TextColor="#0D2B45"
+                                BackgroundColor="Transparent"
+                                HeightRequest="50"/>
+                </Grid>
+            </Border>
 
-        <Label
-            x:Name="LblTotal"
-            Text="Всего: 0 мл"
-            FontSize="18"/>
+            <!-- ИТОГО -->
+            <Border Style="{StaticResource Card}" Padding="20,16">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Grid.Column="0"
+                           Text="💧"
+                           FontSize="28"
+                           VerticalOptions="Center"
+                           Margin="0,0,14,0"/>
+                    <VerticalStackLayout Grid.Column="1"
+                                         VerticalOptions="Center"
+                                         Spacing="2">
+                        <Label Text="За выбранный день"
+                               Style="{StaticResource CaptionLabel}"/>
+                        <Label x:Name="LblTotal"
+                               Text="Всего: 0 мл"
+                               TextColor="#1A9BE8"
+                               FontSize="22"
+                               FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
 
-        <CollectionView
-            x:Name="HistoryList">
+            <!-- СПИСОК ЗАПИСЕЙ -->
+            <Label Text="Записи"
+                   Style="{StaticResource SectionLabel}"/>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Margin="0,5" Padding="10">
-                        <Grid ColumnDefinitions="40,*,80">
+            <CollectionView x:Name="HistoryList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0,0,0,10"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 14"
+                                Stroke="#D6EAF8"
+                                StrokeThickness="1"
+                                Padding="14,12">
+                            <Border.Shadow>
+                                <Shadow Brush="#1A1A9BE8"
+                                        Offset="0,3"
+                                        Radius="8"
+                                        Opacity="0.1"/>
+                            </Border.Shadow>
 
-                            <Label
-                                Grid.Column="0"
-                                Text="{Binding Icon}"
-                                FontSize="24"/>
+                            <Grid ColumnDefinitions="44,*,Auto" ColumnSpacing="12">
 
-                            <VerticalStackLayout Grid.Column="1">
+                                <!-- Иконка в кружке -->
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#E8F4FD"
+                                        StrokeShape="RoundRectangle 12"
+                                        StrokeThickness="0"
+                                        HeightRequest="44"
+                                        WidthRequest="44">
+                                    <Label Text="{Binding Icon}"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                </Border>
 
-                                <Label
-                                    Text="{Binding DrinkType}"
-                                    FontAttributes="Bold"/>
+                                <!-- Тип и время -->
+                                <VerticalStackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="2">
+                                    <Label Text="{Binding DrinkType}"
+                                           TextColor="#0D2B45"
+                                           FontSize="15"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Timestamp}"
+                                           TextColor="#5A87A8"
+                                           FontSize="12"/>
+                                </VerticalStackLayout>
 
-                                <Label
-                                    Text="{Binding Timestamp}"
-                                    FontSize="12"/>
+                                <!-- Объём -->
+                                <Label Grid.Column="2"
+                                       Text="{Binding Amount, StringFormat='{0} мл'}"
+                                       TextColor="#1A9BE8"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
 
-                            </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                            <Label
-                                Grid.Column="2"
-                                Text="{Binding Amount}"
-                                HorizontalOptions="End"
-                                VerticalOptions="Center"/>
-
-                        </Grid>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
-
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

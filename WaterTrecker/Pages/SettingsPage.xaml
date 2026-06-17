@@ -3,29 +3,113 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WaterTrecker.Pages.SettingsPage"
              Title="Настройки">
-    <VerticalStackLayout Padding="20" Spacing="20">
 
-        <Label Text="Дневная цель" FontSize="18" FontAttributes="Bold"/>
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="16">
 
-        <Entry
-            x:Name="EntryGoal"
-            Keyboard="Numeric"
-            Placeholder="2000"/>
+            <!-- ЗАГОЛОВОК -->
+            <Label Text="Настройки"
+                   Style="{StaticResource DisplayLabel}"
+                   HorizontalTextAlignment="Start"
+                   FontSize="28"/>
 
-        <Label Text="Тёмная тема"
-               FontSize="18"
-               FontAttributes="Bold"/>
+            <!-- ДНЕВНАЯ ЦЕЛЬ -->
+            <Label Text="Цель"
+                   Style="{StaticResource SectionLabel}"/>
 
-        <Switch x:Name="SwitchDarkMode"
-                Toggled="OnThemeChanged"/>
+            <Border Style="{StaticResource Card}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Дневная цель потребления воды"
+                           Style="{StaticResource BodyLabel}"
+                           FontAttributes="Bold"/>
+                    <Label Text="Рекомендуемая норма — 2000–2500 мл в день"
+                           Style="{StaticResource CaptionLabel}"/>
+                    <Border BackgroundColor="#F0F8FF"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="#D6EAF8"
+                            StrokeThickness="1"
+                            Padding="14,0"
+                            Margin="0,4,0,0">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry Grid.Column="0"
+                                   x:Name="EntryGoal"
+                                   Keyboard="Numeric"
+                                   Placeholder="2000"
+                                   BackgroundColor="Transparent"
+                                   HeightRequest="50"/>
+                            <Label Grid.Column="1"
+                                   Text="мл"
+                                   Style="{StaticResource CaptionLabel}"
+                                   VerticalOptions="Center"
+                                   Margin="0,0,4,0"/>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
 
-        <Button
-            Text="Очистить все записи"
-            Clicked="OnClearData"/>
+            <!-- ВНЕШНИЙ ВИД -->
+            <Label Text="Внешний вид"
+                   Style="{StaticResource SectionLabel}"/>
 
-        <Button
-            Text="Сохранить"
-            Clicked="OnSave"/>
+            <Border Style="{StaticResource Card}">
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Grid.Column="0"
+                                         Spacing="2"
+                                         VerticalOptions="Center">
+                        <Label Text="Тёмная тема"
+                               Style="{StaticResource BodyLabel}"
+                               FontAttributes="Bold"/>
+                        <Label Text="Переключить тёмный режим интерфейса"
+                               Style="{StaticResource CaptionLabel}"/>
+                    </VerticalStackLayout>
+                    <Switch Grid.Column="1"
+                            x:Name="SwitchDarkMode"
+                            Toggled="OnThemeChanged"
+                            OnColor="#1A9BE8"
+                            ThumbColor="White"
+                            VerticalOptions="Center"/>
+                </Grid>
+            </Border>
 
-    </VerticalStackLayout>
+            <!-- ОПАСНАЯ ЗОНА -->
+            <Label Text="Данные"
+                   Style="{StaticResource SectionLabel}"
+                   Margin="0,8,0,0"/>
+
+            <Border BackgroundColor="#FDEEF0"
+                    StrokeShape="RoundRectangle 16"
+                    Stroke="#F5C6CB"
+                    StrokeThickness="1"
+                    Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Очистить все записи"
+                           TextColor="#0D2B45"
+                           FontSize="15"
+                           FontAttributes="Bold"/>
+                    <Label Text="Это действие удалит всю историю потребления воды. Отменить нельзя."
+                           TextColor="#8B4A54"
+                           FontSize="13"/>
+                    <Button Text="Удалить все данные"
+                            Clicked="OnClearData"
+                            BackgroundColor="#E05A6A"
+                            TextColor="White"
+                            CornerRadius="12"
+                            HeightRequest="46"
+                            FontAttributes="Bold"
+                            Margin="0,4,0,0">
+                        <Button.Shadow>
+                            <Shadow Brush="#40E05A6A" Offset="0,3" Radius="8" Opacity="0.3"/>
+                        </Button.Shadow>
+                    </Button>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- СОХРАНИТЬ -->
+            <Button Text="Сохранить настройки"
+                    Clicked="OnSave"
+                    Margin="0,4,0,16"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
