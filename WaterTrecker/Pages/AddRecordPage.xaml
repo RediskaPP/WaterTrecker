@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.AddRecordPage"
+             Title="Добавить запись">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="16">
+
+            <!-- ОБЪЁМ -->
+            <Border Style="{StaticResource Card}">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Объём"
+                           Style="{StaticResource SectionLabel}"
+                           Margin="0"/>
+
+                    <!-- Большое число -->
+                    <Label x:Name="LblAmount"
+                           Text="250 мл"
+                           Style="{StaticResource DisplayLabel}"/>
+
+                    <!-- Слайдер -->
+                    <Slider x:Name="SliderAmount"
+                            Minimum="50"
+                            Maximum="1000"
+                            Value="250"
+                            ValueChanged="OnSliderChanged"/>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                        <Label Grid.Column="0"
+                               Text="50 мл"
+                               Style="{StaticResource CaptionLabel}"
+                               HorizontalTextAlignment="Start"/>
+                        <Label Grid.Column="1"
+                               Text="1000 мл"
+                               Style="{StaticResource CaptionLabel}"
+                               HorizontalTextAlignment="End"/>
+                    </Grid>
+
+                    <!-- Разделитель -->
+                    <BoxView HeightRequest="1"
+                             Color="#D6EAF8"
+                             Margin="0,4"/>
+
+                    <!-- Ввод вручную -->
+                    <Label Text="Или введите точное значение"
+                           Style="{StaticResource CaptionLabel}"/>
+
+                    <Border BackgroundColor="#F0F8FF"
+                            StrokeShape="RoundRectangle 12"
+                            Stroke="#D6EAF8"
+                            StrokeThickness="1"
+                            Padding="14,0">
+                        <Entry x:Name="EntryAmount"
+                               Placeholder="например, 330"
+                               Keyboard="Numeric"
+                               TextChanged="OnEntryChanged"
+                               HeightRequest="48"
+                               BackgroundColor="Transparent"/>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ТИП НАПИТКА -->
+            <Label Text="Тип напитка"
+                   Style="{StaticResource SectionLabel}"/>
+
+            <CollectionView x:Name="DrinkList"
+                            SelectionMode="Single"
+                            SelectionChanged="OnDrinkSelected"
+                            HeightRequest="80">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="White"
+                                StrokeShape="RoundRectangle 14"
+                                Stroke="#D6EAF8"
+                                StrokeThickness="1.5"
+                                Padding="14,10"
+                                WidthRequest="72">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding Icon}"
+                                       FontSize="26"
+                                       HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Name}"
+                                       FontSize="11"
+                                       TextColor="#5A87A8"
+                                       HorizontalTextAlignment="Center"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- ВРЕМЯ -->
+            <Label Text="Время"
+                   Style="{StaticResource SectionLabel}"/>
+
+            <Border BackgroundColor="White"
+                    StrokeShape="RoundRectangle 14"
+                    Stroke="#D6EAF8"
+                    StrokeThickness="1"
+                    Padding="16,4">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Label Grid.Column="0"
+                           Text="🕐"
+                           FontSize="20"
+                           VerticalOptions="Center"
+                           Margin="0,0,10,0"/>
+                    <TimePicker Grid.Column="1"
+                                x:Name="TimePicker"
+                                HeightRequest="52"/>
+                </Grid>
+            </Border>
+
+            <!-- КНОПКА СОХРАНИТЬ -->
+            <Button Text="Сохранить запись"
+                    Clicked="OnSave"
+                    Margin="0,8,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

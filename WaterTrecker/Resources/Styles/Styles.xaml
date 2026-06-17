@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+   
+    <Color x:Key="Primary">#1A9BE8</Color>
+    <Color x:Key="PrimaryDark">#1178C2</Color>
+    <Color x:Key="PrimaryLight">#60BFFF</Color>
+    <Color x:Key="Accent">#00D4FF</Color>
+    <Color x:Key="Background">#F0F8FF</Color>
+    <Color x:Key="Surface">#FFFFFF</Color>
+    <Color x:Key="SurfaceTint">#E8F4FD</Color>
+    <Color x:Key="TextPrimary">#0D2B45</Color>
+    <Color x:Key="TextSecondary">#5A87A8</Color>
+    <Color x:Key="TextHint">#9BBFD8</Color>
+    <Color x:Key="Danger">#E05A6A</Color>
+    <Color x:Key="DangerLight">#FDEEF0</Color>
+    <Color x:Key="Divider">#D6EAF8</Color>
+    
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}"/>
+    </Style>
+
+    <!-- Display — большие числа / заголовок дня -->
+    <Style x:Key="DisplayLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Section header -->
+    <Style x:Key="SectionLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="CharacterSpacing" Value="1.5"/>
+        <Setter Property="TextTransform" Value="Uppercase"/>
+        <Setter Property="Margin" Value="0,8,0,4"/>
+    </Style>
+
+    <!-- Body -->
+    <Style x:Key="BodyLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+
+    <!-- Caption / hint -->
+    <Style x:Key="CaptionLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <!-- Subtle hint / empty state -->
+    <Style x:Key="HintLabel" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextHint}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+
+  
+    <Style x:Key="Card" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 16"/>
+        <Setter Property="Stroke" Value="{StaticResource Divider}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#1A1A9BE8" Offset="0,4" Radius="12" Opacity="0.12"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource Primary}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource SurfaceTint}"/>
+        <Setter Property="HeightRequest" Value="10"/>
+        <Setter Property="Margin" Value="0,4"/>
+    </Style>
+
+    <Style TargetType="Slider">
+        <Setter Property="MinimumTrackColor" Value="{StaticResource Primary}"/>
+        <Setter Property="MaximumTrackColor" Value="{StaticResource SurfaceTint}"/>
+        <Setter Property="ThumbColor" Value="{StaticResource PrimaryDark}"/>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextHint}"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+
+    <Style TargetType="TimePicker">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+
+
+    <!-- Primary CTA -->
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="CornerRadius" Value="14"/>
+        <Setter Property="HeightRequest" Value="52"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#401A9BE8" Offset="0,4" Radius="10" Opacity="0.3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Quick-add chip -->
+    <Style x:Key="ChipButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource SurfaceTint}"/>
+        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="HeightRequest" Value="44"/>
+        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#201A9BE8" Offset="0,2" Radius="6" Opacity="0.15"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Delete / danger icon button -->
+    <Style x:Key="DangerIconButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource DangerLight}"/>
+        <Setter Property="TextColor" Value="{StaticResource Danger}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="HeightRequest" Value="36"/>
+        <Setter Property="WidthRequest" Value="36"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="Transparent" Offset="0,0" Radius="0" Opacity="0"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
