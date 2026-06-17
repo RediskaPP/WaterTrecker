@@ -5,66 +5,148 @@
              Title="Главная">
 
     <ScrollView>
-        <VerticalStackLayout Padding="16" Spacing="16">
+        <VerticalStackLayout Padding="20,16" Spacing="16">
 
-            <!-- Дата -->
-            <Label x:Name="LblDate"/>
+            <!-- дата + прогресс -->
+            <Border Style="{StaticResource Card}" Padding="24,20">
+                <VerticalStackLayout Spacing="12">
 
-            <!-- Прогресс -->
-            <Label x:Name="LblCurrent" Text="0 мл"/>
-            <Label x:Name="LblGoal" Text="из 2500 мл"/>
-            <ProgressBar x:Name="ProgressBar" Progress="0"/>
+                    <!-- Дата -->
+                    <Label x:Name="LblDate"
+                           Style="{StaticResource CaptionLabel}"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           CharacterSpacing="0.8"
+                           TextTransform="Uppercase"/>
 
-            <!-- Мотивационное сообщение -->
-            <Label x:Name="LblMotivation"/>
+                    <!-- Выпито -->
+                    <Label x:Name="LblCurrent"
+                           Text="0 мл"
+                           Style="{StaticResource DisplayLabel}"/>
 
-            <!-- Быстрое добавление -->
-            <Label Text="Быстро добавить"/>
-            <HorizontalStackLayout Spacing="8">
-                <Button Text="150 мл" Clicked="OnAdd150"/>
-                <Button Text="250 мл" Clicked="OnAdd250"/>
-                <Button Text="500 мл" Clicked="OnAdd500"/>
+                    <!-- Из цели -->
+                    <Label x:Name="LblGoal"
+                           Text="из 2500 мл"
+                           Style="{StaticResource CaptionLabel}"
+                           HorizontalTextAlignment="Center"/>
+
+                    <!-- Прогресс бар -->
+                    <ProgressBar x:Name="ProgressBar"
+                                 Progress="0"
+                                 Margin="0,4"/>
+
+                    <!-- Мотивация -->
+                    <Label x:Name="LblMotivation"
+                           Style="{StaticResource HintLabel}"
+                           Margin="0,4,0,0"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- БЫСТРОЕ ДОБАВЛЕНИЕ -->
+            <Label Text="Быстро добавить"
+                   Style="{StaticResource SectionLabel}"/>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="💧 150 мл"
+                        Style="{StaticResource ChipButton}"
+                        Clicked="OnAdd150"/>
+                <Button Text="🥤 250 мл"
+                        Style="{StaticResource ChipButton}"
+                        Clicked="OnAdd250"/>
+                <Button Text="🍶 500 мл"
+                        Style="{StaticResource ChipButton}"
+                        Clicked="OnAdd500"/>
             </HorizontalStackLayout>
 
-            <!-- Записи за сегодня -->
-            <Label Text="Сегодня"/>
-            <Label x:Name="LblEmpty"
-                   Text="Нет записей. Добавь первый стакан!"
-                   IsVisible="True"/>
+            <!-- ЗАПИСИ ЗА СЕГОДНЯ -->
+            <Label Text="Сегодня"
+                   Style="{StaticResource SectionLabel}"/>
 
+            <!-- Пустое состояние -->
+            <Border x:Name="LblEmptyWrapper"
+                    Style="{StaticResource Card}"
+                    Padding="24,32"
+                    IsVisible="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="💧"
+                           FontSize="36"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="LblEmpty"
+                           Text="Нет записей. Добавь первый стакан!"
+                           Style="{StaticResource HintLabel}"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Лог -->
             <CollectionView x:Name="WaterLogList"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="0,8" ColumnSpacing="8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                        <Border Margin="0,0,0,10"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 14"
+                                Stroke="#D6EAF8"
+                                StrokeThickness="1"
+                                Padding="14,12">
+                            <Border.Shadow>
+                                <Shadow Brush="#1A1A9BE8"
+                                        Offset="0,3"
+                                        Radius="8"
+                                        Opacity="0.1"/>
+                            </Border.Shadow>
 
-                            <Label Grid.Column="0"
-                                   Text="{Binding Icon}"
-                                   FontSize="24"
-                                   VerticalOptions="Center"/>
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="44"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="36"/>
+                                </Grid.ColumnDefinitions>
 
-                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
-                                <Label Text="{Binding DrinkType}" FontAttributes="Bold"/>
-                                <Label Text="{Binding TimeDisplay}" TextColor="Gray" FontSize="12"/>
-                            </VerticalStackLayout>
+                                <!-- Иконка напитка в кружке -->
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#E8F4FD"
+                                        StrokeShape="RoundRectangle 12"
+                                        StrokeThickness="0"
+                                        HeightRequest="44"
+                                        WidthRequest="44">
+                                    <Label Text="{Binding Icon}"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                </Border>
 
-                            <Label Grid.Column="2"
-                                   Text="{Binding Amount, StringFormat='{0} мл'}"
-                                   VerticalOptions="Center"
-                                   FontAttributes="Bold"/>
+                                <!-- Тип и время -->
+                                <VerticalStackLayout Grid.Column="1"
+                                                     VerticalOptions="Center"
+                                                     Spacing="2">
+                                    <Label Text="{Binding DrinkType}"
+                                           TextColor="#0D2B45"
+                                           FontSize="15"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding TimeDisplay}"
+                                           TextColor="#5A87A8"
+                                           FontSize="12"/>
+                                </VerticalStackLayout>
 
-                            <Button Grid.Column="3"
-                                    Text="✕"
-                                    CommandParameter="{Binding Id}"
-                                    Clicked="OnDelete"
-                                    VerticalOptions="Center"/>
-                        </Grid>
+                                <!-- Объём -->
+                                <Label Grid.Column="2"
+                                       Text="{Binding Amount, StringFormat='{0} мл'}"
+                                       TextColor="#1A9BE8"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
+
+                                <!-- Удалить -->
+                                <Button Grid.Column="3"
+                                        Text="✕"
+                                        Style="{StaticResource DangerIconButton}"
+                                        CommandParameter="{Binding Id}"
+                                        Clicked="OnDelete"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
