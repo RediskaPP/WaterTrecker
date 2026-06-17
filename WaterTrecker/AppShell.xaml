@@ -16,6 +16,14 @@
             <ShellContent Route="addrecord"
                           ContentTemplate="{DataTemplate pages:AddRecordPage}"/>
         </Tab>
+        <Tab Title="История">
+            <ShellContent Route="history"
+                  ContentTemplate="{DataTemplate pages:HistoryPage}"/>
+        </Tab>
+        <Tab Title="Настиройки">
+            <ShellContent Route="history"
+          ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        </Tab>
     </TabBar>
 
 </Shell>

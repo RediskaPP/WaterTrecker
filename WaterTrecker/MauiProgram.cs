@@ -23,8 +23,8 @@ namespace WaterTrecker
 
             builder.Services.AddTransient<DashboardPage>();
             builder.Services.AddTransient<AddRecordPage>();
-            //builder.Services.AddTransient<HistoryPage>();
-            //builder.Services.AddTransient<SettingsPage>();
+            builder.Services.AddTransient<HistoryPage>();
+            builder.Services.AddTransient<SettingsPage>();
 #endif
 
             return builder.Build();

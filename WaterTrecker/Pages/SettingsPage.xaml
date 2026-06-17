@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.SettingsPage"
+             Title="Настройки">
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="Дневная цель" FontSize="18" FontAttributes="Bold"/>
+
+        <Entry
+            x:Name="EntryGoal"
+            Keyboard="Numeric"
+            Placeholder="2000"/>
+
+        <Label Text="Тёмная тема"
+               FontSize="18"
+               FontAttributes="Bold"/>
+
+        <Switch x:Name="SwitchDarkMode"
+                Toggled="OnThemeChanged"/>
+
+        <Button
+            Text="Очистить все записи"
+            Clicked="OnClearData"/>
+
+        <Button
+            Text="Сохранить"
+            Clicked="OnSave"/>
+
+    </VerticalStackLayout>
+</ContentPage>
