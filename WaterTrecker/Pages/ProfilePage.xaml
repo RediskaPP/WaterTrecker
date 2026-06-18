@@ -3,87 +3,92 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WaterTrecker.Pages.ProfilePage"
              Title="Профиль">
+
     <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="16">
 
-        <VerticalStackLayout
-            Padding="20"
-            Spacing="15">
+            <!-- АВАТАР -->
+            <Border Style="{StaticResource Card}" Padding="28,24">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
 
-            <Frame CornerRadius="20">
+                    <!-- Иконка в голубом круге -->
+                    <Border BackgroundColor="#E8F4FD"
+                            StrokeShape="RoundRectangle 50"
+                            StrokeThickness="0"
+                            HeightRequest="96"
+                            WidthRequest="96"
+                            HorizontalOptions="Center">
+                        <Label Text="👤"
+                               FontSize="48"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                    </Border>
 
-                <VerticalStackLayout
-                    HorizontalOptions="Center">
+                    <Label Text="Пользователь"
+                           Style="{StaticResource DisplayLabel}"
+                           FontSize="22"
+                           Margin="0,4,0,0"/>
 
-                    <Label
-                        Text="👤"
-                        FontSize="70"
-                        HorizontalOptions="Center"/>
-
-                    <Label
-                        Text="Пользователь"
-                        FontSize="24"
-                        FontAttributes="Bold"
-                        HorizontalOptions="Center"/>
+                    <Label Text="Отслеживай водный баланс каждый день"
+                           Style="{StaticResource CaptionLabel}"
+                           HorizontalTextAlignment="Center"/>
 
                 </VerticalStackLayout>
+            </Border>
 
-            </Frame>
+            <!-- СТАТИСТИКА -->
+            <Label Text="Статистика"
+                   Style="{StaticResource SectionLabel}"/>
 
-            <Grid ColumnDefinitions="*,*">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
 
-                <Frame Grid.Column="0" Margin="0,0,5,0">
-
-                    <VerticalStackLayout>
-
-                        <Label
-                            Text="Сегодня"
-                            FontAttributes="Bold"/>
-
-                        <Label
-                            x:Name="LblToday"
-                            FontSize="26"/>
-
+                <!-- Сегодня -->
+                <Border Grid.Column="0" Style="{StaticResource Card}" Padding="16">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="💧"
+                               FontSize="24"
+                               HorizontalTextAlignment="Center"/>
+                        <Label x:Name="LblToday"
+                               Text="—"
+                               TextColor="#1A9BE8"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Сегодня"
+                               Style="{StaticResource CaptionLabel}"
+                               HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
+                </Border>
 
-                </Frame>
-
-                <Frame Grid.Column="1">
-
-                    <VerticalStackLayout>
-
-                        <Label
-                            Text="Записей"
-                            FontAttributes="Bold"/>
-
-                        <Label
-                            x:Name="LblRecords"
-                            FontSize="26"/>
-
+                <!-- Записей -->
+                <Border Grid.Column="1" Style="{StaticResource Card}" Padding="16">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="📋"
+                               FontSize="24"
+                               HorizontalTextAlignment="Center"/>
+                        <Label x:Name="LblRecords"
+                               Text="—"
+                               TextColor="#1A9BE8"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Записей"
+                               Style="{StaticResource CaptionLabel}"
+                               HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>
-
-                </Frame>
+                </Border>
 
             </Grid>
 
-            <Frame CornerRadius="20">
+            <!-- ДОСТИЖЕНИЯ -->
+            <Label Text="Достижения"
+                   Style="{StaticResource SectionLabel}"/>
 
-                <VerticalStackLayout>
-
-                    <Label
-                        Text="Достижения"
-                        FontAttributes="Bold"
-                        FontSize="18"/>
-
-                    <VerticalStackLayout
-                        x:Name="BadgeLayout"
-                        Spacing="5"/>
-
-                </VerticalStackLayout>
-
-            </Frame>
+            <Border Style="{StaticResource Card}">
+                <VerticalStackLayout x:Name="BadgeLayout" Spacing="10"/>
+            </Border>
 
         </VerticalStackLayout>
-
     </ScrollView>
 
 </ContentPage>

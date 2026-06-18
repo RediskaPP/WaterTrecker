@@ -3,148 +3,168 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WaterTrecker.Pages.NotificationsPage"
              Title="Напоминания">
+
     <ScrollView>
+        <VerticalStackLayout Padding="20,16" Spacing="16">
 
-        <VerticalStackLayout
-            Padding="20"
-            Spacing="16">
+            <!-- ЗАГОЛОВОК -->
+            <Label Text="Напоминания"
+                   Style="{StaticResource DisplayLabel}"
+                   HorizontalTextAlignment="Start"
+                   FontSize="28"/>
 
-            <Frame
-                CornerRadius="20"
-                BorderColor="#E5E7EB"
-                Padding="16">
-
+            <!-- ВКЛЮЧИТЬ НАПОМИНАНИЯ -->
+            <Border Style="{StaticResource Card}">
                 <Grid ColumnDefinitions="*,Auto">
-
-                    <VerticalStackLayout>
-
-                        <Label
-                            Text="Напоминания"
-                            FontSize="18"
-                            FontAttributes="Bold"/>
-
-                        <Label
-                            Text="Напоминать пить воду в течение дня"
-                            FontSize="13"
-                            TextColor="Gray"/>
-
+                    <VerticalStackLayout Grid.Column="0"
+                                         Spacing="4"
+                                         VerticalOptions="Center">
+                        <Label Text="Напоминания включены"
+                               Style="{StaticResource BodyLabel}"
+                               FontAttributes="Bold"/>
+                        <Label Text="Напоминать пить воду в течение дня"
+                               Style="{StaticResource CaptionLabel}"/>
                     </VerticalStackLayout>
-
-                    <Switch
-                        Grid.Column="1"
-                        IsToggled="{Binding Settings.Enabled}" />
-
+                    <Switch Grid.Column="1"
+                            IsToggled="{Binding Settings.Enabled}"
+                            OnColor="#1A9BE8"
+                            ThumbColor="White"
+                            VerticalOptions="Center"/>
                 </Grid>
+            </Border>
 
-            </Frame>
+            <!-- ИНТЕРВАЛ -->
+            <Label Text="Интервал"
+                   Style="{StaticResource SectionLabel}"/>
 
-            <Frame
-                CornerRadius="20"
-                BorderColor="#E5E7EB"
-                Padding="16">
-
+            <Border Style="{StaticResource Card}">
                 <VerticalStackLayout Spacing="12">
+                    <Label Text="{Binding IntervalText}"
+                           TextColor="#1A9BE8"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Напоминание будет приходить с этим интервалом"
+                           Style="{StaticResource CaptionLabel}"
+                           HorizontalTextAlignment="Center"/>
 
-                    <Label
-                        Text="Интервал"
-                        FontSize="18"
-                        FontAttributes="Bold"/>
-
-                    <Label
-                        Text="{Binding IntervalText}"
-                        FontSize="14"
-                        TextColor="Gray"/>
-
-                    <HorizontalStackLayout Spacing="0">
-
-                        <Button
-        Text="-"
-        Clicked="MinusClicked"
-        WidthRequest="40"/>
-
-                        <Button
-        Text="+"
-        Clicked="PlusClicked"
-        WidthRequest="40"/>
-
-                    </HorizontalStackLayout>
-
+                    <!-- Кнопки ± -->
+                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="12" HorizontalOptions="Center" WidthRequest="180">
+                        <Button Grid.Column="0"
+                                Text="−"
+                                Clicked="MinusClicked"
+                                BackgroundColor="#E8F4FD"
+                                TextColor="#1A9BE8"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="48"
+                                WidthRequest="64">
+                            <Button.Shadow>
+                                <Shadow Brush="Transparent" Offset="0,0" Radius="0" Opacity="0"/>
+                            </Button.Shadow>
+                        </Button>
+                        <Label Grid.Column="1"
+                               Text="интервал"
+                               Style="{StaticResource CaptionLabel}"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center"/>
+                        <Button Grid.Column="2"
+                                Text="+"
+                                Clicked="PlusClicked"
+                                BackgroundColor="#1A9BE8"
+                                TextColor="White"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                CornerRadius="12"
+                                HeightRequest="48"
+                                WidthRequest="64">
+                            <Button.Shadow>
+                                <Shadow Brush="#401A9BE8" Offset="0,3" Radius="8" Opacity="0.25"/>
+                            </Button.Shadow>
+                        </Button>
+                    </Grid>
                 </VerticalStackLayout>
+            </Border>
 
-            </Frame>
+            <!-- ТИХИЕ ЧАСЫ -->
+            <Label Text="Тихие часы"
+                   Style="{StaticResource SectionLabel}"/>
 
-            <Frame
-                CornerRadius="20"
-                BorderColor="#E5E7EB"
-                Padding="16">
-
+            <Border Style="{StaticResource Card}">
                 <VerticalStackLayout Spacing="12">
+                    <Label Text="Не беспокоить в это время"
+                           Style="{StaticResource CaptionLabel}"/>
 
-                    <Label
-                        Text="Тихие часы"
-                        FontSize="18"
-                        FontAttributes="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="8">
 
-                    <Grid ColumnDefinitions="*,Auto,*">
+                        <Border Grid.Column="0"
+                                BackgroundColor="#F0F8FF"
+                                StrokeShape="RoundRectangle 12"
+                                Stroke="#D6EAF8"
+                                StrokeThickness="1"
+                                Padding="10,0">
+                            <TimePicker Time="{Binding Settings.QuietStart}"
+                                        TextColor="#0D2B45"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="48"/>
+                        </Border>
 
-                        <TimePicker
-                            Time="{Binding Settings.QuietStart}" />
+                        <Label Grid.Column="1"
+                               Text="—"
+                               TextColor="#5A87A8"
+                               FontSize="18"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center"/>
 
-                        <Label
-                            Grid.Column="1"
-                            Text="—"
-                            VerticalOptions="Center"
-                            Margin="10,0"/>
-
-                        <TimePicker
-                            Grid.Column="2"
-                            Time="{Binding Settings.QuietEnd}" />
+                        <Border Grid.Column="2"
+                                BackgroundColor="#F0F8FF"
+                                StrokeShape="RoundRectangle 12"
+                                Stroke="#D6EAF8"
+                                StrokeThickness="1"
+                                Padding="10,0">
+                            <TimePicker Time="{Binding Settings.QuietEnd}"
+                                        TextColor="#0D2B45"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="48"/>
+                        </Border>
 
                     </Grid>
-
                 </VerticalStackLayout>
+            </Border>
 
-            </Frame>
+            <!-- БЛИЖАЙШИЕ УВЕДОМЛЕНИЯ -->
+            <Label Text="Ближайшие уведомления"
+                   Style="{StaticResource SectionLabel}"/>
 
-            <Frame
-                CornerRadius="20"
-                BorderColor="#E5E7EB"
-                Padding="16">
-
-                <VerticalStackLayout Spacing="10">
-
-                    <Label
-                        Text="Ближайшие уведомления"
-                        FontSize="18"
-                        FontAttributes="Bold"/>
-
-                    <CollectionView
-                        ItemsSource="{Binding UpcomingNotifications}">
-
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-
-                                <Frame
-                                    Margin="0,4"
-                                    BackgroundColor="#F3F4F6"
-                                    BorderColor="Transparent">
-
-                                    <Label
-                                        Text="{Binding}"
-                                        FontSize="16"/>
-
-                                </Frame>
-
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-
-                    </CollectionView>
-
-                </VerticalStackLayout>
-
-            </Frame>
+            <Border Style="{StaticResource Card}" Padding="16">
+                <CollectionView ItemsSource="{Binding UpcomingNotifications}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,0,0,8"
+                                    BackgroundColor="#E8F4FD"
+                                    StrokeShape="RoundRectangle 10"
+                                    StrokeThickness="0"
+                                    Padding="14,10">
+                                <Grid ColumnDefinitions="Auto,*">
+                                    <Label Grid.Column="0"
+                                           Text="🔔"
+                                           FontSize="16"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,10,0"/>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding}"
+                                           TextColor="#0D2B45"
+                                           FontSize="15"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
 
         </VerticalStackLayout>
-
     </ScrollView>
+
 </ContentPage>
