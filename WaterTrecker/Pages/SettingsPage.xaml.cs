@@ -29,7 +29,7 @@ public partial class SettingsPage : ContentPage
             e.Value ? AppTheme.Dark : AppTheme.Light;
     }
 
-    private void OnSave(object sender, EventArgs e)
+    private async void OnSave(object sender, EventArgs e)
     {
         if (int.TryParse(EntryGoal.Text, out int goal))
         {
@@ -44,6 +44,8 @@ public partial class SettingsPage : ContentPage
             "Готово",
             "Настройки сохранены",
             "OK");
+
+        await Shell.Current.GoToAsync("..");
     }
 
     private async void OnClearData(object sender, EventArgs e)

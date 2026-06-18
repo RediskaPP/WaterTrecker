@@ -9,7 +9,7 @@ public partial class DashboardPage : ContentPage
     private readonly WaterService _waterService;
     private readonly ObservableCollection<WaterRecordView> _items = new();
 
-    private const int DailyGoal = 2500;
+    private int DailyGoal => Preferences.Get("daily_goal", 2000);
 
     public DashboardPage(WaterService waterService)
     {
