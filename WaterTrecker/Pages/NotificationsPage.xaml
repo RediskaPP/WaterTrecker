@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.NotificationsPage"
+             Title="Напоминания">
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="16">
+
+            <Frame
+                CornerRadius="20"
+                BorderColor="#E5E7EB"
+                Padding="16">
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <VerticalStackLayout>
+
+                        <Label
+                            Text="Напоминания"
+                            FontSize="18"
+                            FontAttributes="Bold"/>
+
+                        <Label
+                            Text="Напоминать пить воду в течение дня"
+                            FontSize="13"
+                            TextColor="Gray"/>
+
+                    </VerticalStackLayout>
+
+                    <Switch
+                        Grid.Column="1"
+                        IsToggled="{Binding Settings.Enabled}" />
+
+                </Grid>
+
+            </Frame>
+
+            <Frame
+                CornerRadius="20"
+                BorderColor="#E5E7EB"
+                Padding="16">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Интервал"
+                        FontSize="18"
+                        FontAttributes="Bold"/>
+
+                    <Label
+                        Text="{Binding IntervalText}"
+                        FontSize="14"
+                        TextColor="Gray"/>
+
+                    <HorizontalStackLayout Spacing="0">
+
+                        <Button
+        Text="-"
+        Clicked="MinusClicked"
+        WidthRequest="40"/>
+
+                        <Button
+        Text="+"
+        Clicked="PlusClicked"
+        WidthRequest="40"/>
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <Frame
+                CornerRadius="20"
+                BorderColor="#E5E7EB"
+                Padding="16">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Тихие часы"
+                        FontSize="18"
+                        FontAttributes="Bold"/>
+
+                    <Grid ColumnDefinitions="*,Auto,*">
+
+                        <TimePicker
+                            Time="{Binding Settings.QuietStart}" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="—"
+                            VerticalOptions="Center"
+                            Margin="10,0"/>
+
+                        <TimePicker
+                            Grid.Column="2"
+                            Time="{Binding Settings.QuietEnd}" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <Frame
+                CornerRadius="20"
+                BorderColor="#E5E7EB"
+                Padding="16">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Ближайшие уведомления"
+                        FontSize="18"
+                        FontAttributes="Bold"/>
+
+                    <CollectionView
+                        ItemsSource="{Binding UpcomingNotifications}">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Frame
+                                    Margin="0,4"
+                                    BackgroundColor="#F3F4F6"
+                                    BorderColor="Transparent">
+
+                                    <Label
+                                        Text="{Binding}"
+                                        FontSize="16"/>
+
+                                </Frame>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

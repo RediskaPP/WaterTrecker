@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterTrecker.Pages.ProfilePage"
+             Title="Профиль">
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="15">
+
+            <Frame CornerRadius="20">
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center">
+
+                    <Label
+                        Text="👤"
+                        FontSize="70"
+                        HorizontalOptions="Center"/>
+
+                    <Label
+                        Text="Пользователь"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <Grid ColumnDefinitions="*,*">
+
+                <Frame Grid.Column="0" Margin="0,0,5,0">
+
+                    <VerticalStackLayout>
+
+                        <Label
+                            Text="Сегодня"
+                            FontAttributes="Bold"/>
+
+                        <Label
+                            x:Name="LblToday"
+                            FontSize="26"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+                <Frame Grid.Column="1">
+
+                    <VerticalStackLayout>
+
+                        <Label
+                            Text="Записей"
+                            FontAttributes="Bold"/>
+
+                        <Label
+                            x:Name="LblRecords"
+                            FontSize="26"/>
+
+                    </VerticalStackLayout>
+
+                </Frame>
+
+            </Grid>
+
+            <Frame CornerRadius="20">
+
+                <VerticalStackLayout>
+
+                    <Label
+                        Text="Достижения"
+                        FontAttributes="Bold"
+                        FontSize="18"/>
+
+                    <VerticalStackLayout
+                        x:Name="BadgeLayout"
+                        Spacing="5"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

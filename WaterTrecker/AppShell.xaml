@@ -21,8 +21,16 @@
                   ContentTemplate="{DataTemplate pages:HistoryPage}"/>
         </Tab>
         <Tab Title="Настиройки">
-            <ShellContent Route="history"
-          ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+            <ShellContent Route="settings"
+                ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        </Tab>
+        <Tab Title="Уведомление">
+            <ShellContent Route="notifications"
+                 ContentTemplate="{DataTemplate pages:NotificationsPage}"/>
+        </Tab>
+        <Tab Title="Профиль">
+            <ShellContent Route="profile"
+         ContentTemplate="{DataTemplate pages:ProfilePage}"/>
         </Tab>
     </TabBar>
 
