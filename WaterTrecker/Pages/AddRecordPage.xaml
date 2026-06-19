@@ -105,7 +105,7 @@
                                 Format="HH:mm"
                                 VerticalOptions="Center"
                                 HorizontalOptions="Center"
-                                HorizontalTextAlignment="Center"/>
+                                />
                 </Grid>
             </Border>
 

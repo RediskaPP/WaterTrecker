@@ -82,13 +82,15 @@ public partial class AddRecordPage : ContentPage
             return;
         }
 
+        var selectedDateTime = DateTime.Today.Add(TimePicker.Time ?? TimeSpan.Zero);
+
         var record = new WaterRecord
         {
             Id = Guid.NewGuid(),
             Amount = amount,
             DrinkType = _selectedDrink?.Name ?? "Вода",
             Icon = _selectedDrink?.Icon ?? "💧",
-            Timestamp = DateTime.Now  // просто берём текущее время
+            Timestamp = selectedDateTime // просто берём текущее время
         };
 
         _waterService.Add(record);
