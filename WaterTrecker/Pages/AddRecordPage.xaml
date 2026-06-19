@@ -88,16 +88,24 @@
             <Label Text="Время"
                    Style="{StaticResource SectionLabel}"/>
 
-            <Border Style="{StaticResource Card}" Padding="16,4">
-                <Grid ColumnDefinitions="Auto,*">
+            <Border Style="{StaticResource Card}"
+                    Padding="16,0"
+                    HeightRequest="60">
+                <Grid ColumnDefinitions="Auto,*"
+                      VerticalOptions="Center">
                     <Label Grid.Column="0"
                            Text="🕐"
                            FontSize="20"
                            VerticalOptions="Center"
-                           Margin="0,0,10,0"/>
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Center"
+                           Margin="0,0,12,0"/>
                     <TimePicker Grid.Column="1"
                                 x:Name="TimePicker"
-                                HeightRequest="52"/>
+                                Format="HH:mm"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"/>
                 </Grid>
             </Border>
 

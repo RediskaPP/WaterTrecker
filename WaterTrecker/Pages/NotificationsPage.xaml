@@ -38,51 +38,62 @@
                    Style="{StaticResource SectionLabel}"/>
 
             <Border Style="{StaticResource Card}">
-                <VerticalStackLayout Spacing="12">
+                <VerticalStackLayout Spacing="16">
                     <Label Text="{Binding IntervalText}"
                            TextColor="#1A9BE8"
-                           FontSize="20"
+                           FontSize="22"
                            FontAttributes="Bold"
                            HorizontalTextAlignment="Center"/>
                     <Label Text="Напоминание будет приходить с этим интервалом"
                            Style="{StaticResource CaptionLabel}"
                            HorizontalTextAlignment="Center"/>
 
-                    <!-- Кнопки ± -->
-                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="12" HorizontalOptions="Center" WidthRequest="180">
+                    <!-- Кнопки изменения интервала -->
+                    <Grid ColumnDefinitions="56,*,56"
+                          ColumnSpacing="20"
+                          HorizontalOptions="Center"
+                          WidthRequest="220">
+
                         <Button Grid.Column="0"
                                 Text="−"
                                 Clicked="MinusClicked"
                                 BackgroundColor="#E8F4FD"
                                 TextColor="#1A9BE8"
-                                FontSize="20"
+                                FontSize="22"
                                 FontAttributes="Bold"
-                                CornerRadius="12"
-                                HeightRequest="48"
-                                WidthRequest="64">
+                                CornerRadius="28"
+                                HeightRequest="56"
+                                WidthRequest="56"
+                                Padding="0"
+                                HorizontalOptions="Center">
                             <Button.Shadow>
                                 <Shadow Brush="Transparent" Offset="0,0" Radius="0" Opacity="0"/>
                             </Button.Shadow>
                         </Button>
+
                         <Label Grid.Column="1"
-                               Text="интервал"
+                               Text="мин"
                                Style="{StaticResource CaptionLabel}"
                                VerticalOptions="Center"
                                HorizontalTextAlignment="Center"/>
+
                         <Button Grid.Column="2"
                                 Text="+"
                                 Clicked="PlusClicked"
                                 BackgroundColor="#1A9BE8"
                                 TextColor="White"
-                                FontSize="20"
+                                FontSize="22"
                                 FontAttributes="Bold"
-                                CornerRadius="12"
-                                HeightRequest="48"
-                                WidthRequest="64">
+                                CornerRadius="28"
+                                HeightRequest="56"
+                                WidthRequest="56"
+                                Padding="0"
+                                HorizontalOptions="Center">
                             <Button.Shadow>
                                 <Shadow Brush="#401A9BE8" Offset="0,3" Radius="8" Opacity="0.25"/>
                             </Button.Shadow>
                         </Button>
+
                     </Grid>
                 </VerticalStackLayout>
             </Border>
@@ -92,41 +103,49 @@
                    Style="{StaticResource SectionLabel}"/>
 
             <Border Style="{StaticResource Card}">
-                <VerticalStackLayout Spacing="12">
+                <VerticalStackLayout Spacing="14">
                     <Label Text="Не беспокоить в это время"
                            Style="{StaticResource CaptionLabel}"/>
 
-                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="8">
+                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="10">
 
                         <Border Grid.Column="0"
-                                BackgroundColor="#F0F8FF"
+                                BackgroundColor="{AppThemeBinding Light=#F0F8FF, Dark=#1C2F42}"
                                 StrokeShape="RoundRectangle 12"
-                                Stroke="#D6EAF8"
+                                Stroke="{AppThemeBinding Light=#D6EAF8, Dark=#2A4258}"
                                 StrokeThickness="1"
-                                Padding="10,0">
+                                Padding="12,0"
+                                HeightRequest="48">
                             <TimePicker Time="{Binding Settings.QuietStart}"
-                                        TextColor="#0D2B45"
+                                        Format="HH:mm"
+                                        TextColor="{AppThemeBinding Light=#0D2B45, Dark=#E8F4FD}"
                                         BackgroundColor="Transparent"
-                                        HeightRequest="48"/>
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalOptions="Center"/>
                         </Border>
 
                         <Label Grid.Column="1"
                                Text="—"
-                               TextColor="#5A87A8"
-                               FontSize="18"
+                               TextColor="{AppThemeBinding Light=#5A87A8, Dark=#7AABCC}"
+                               FontSize="16"
                                VerticalOptions="Center"
                                HorizontalTextAlignment="Center"/>
 
                         <Border Grid.Column="2"
-                                BackgroundColor="#F0F8FF"
+                                BackgroundColor="{AppThemeBinding Light=#F0F8FF, Dark=#1C2F42}"
                                 StrokeShape="RoundRectangle 12"
-                                Stroke="#D6EAF8"
+                                Stroke="{AppThemeBinding Light=#D6EAF8, Dark=#2A4258}"
                                 StrokeThickness="1"
-                                Padding="10,0">
+                                Padding="12,0"
+                                HeightRequest="48">
                             <TimePicker Time="{Binding Settings.QuietEnd}"
-                                        TextColor="#0D2B45"
+                                        Format="HH:mm"
+                                        TextColor="{AppThemeBinding Light=#0D2B45, Dark=#E8F4FD}"
                                         BackgroundColor="Transparent"
-                                        HeightRequest="48"/>
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalOptions="Center"/>
                         </Border>
 
                     </Grid>
@@ -142,7 +161,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border Margin="0,0,0,8"
-                                    BackgroundColor="#E8F4FD"
+                                    BackgroundColor="{AppThemeBinding Light=#E8F4FD, Dark=#1C2F42}"
                                     StrokeShape="RoundRectangle 10"
                                     StrokeThickness="0"
                                     Padding="14,10">
@@ -154,7 +173,7 @@
                                            Margin="0,0,10,0"/>
                                     <Label Grid.Column="1"
                                            Text="{Binding}"
-                                           TextColor="#0D2B45"
+                                           TextColor="{AppThemeBinding Light=#0D2B45, Dark=#E8F4FD}"
                                            FontSize="15"
                                            VerticalOptions="Center"/>
                                 </Grid>
