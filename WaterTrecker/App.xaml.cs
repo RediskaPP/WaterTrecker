@@ -7,11 +7,17 @@ namespace WaterTrecker
         public App()
         {
             InitializeComponent();
+
+            bool darkMode = Preferences.Get("dark_mode", false);
+
+            UserAppTheme = darkMode ? AppTheme.Dark : AppTheme.Light;
+
+            MainPage = new AppShell();
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+        //protected override Window CreateWindow(IActivationState? activationState)
+        //{
+        //    return new Window(new AppShell());
+        //}
     }
 }

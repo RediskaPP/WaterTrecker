@@ -25,8 +25,11 @@ public partial class SettingsPage : ContentPage
 
     private void OnThemeChanged(object sender, ToggledEventArgs e)
     {
-        Application.Current!.UserAppTheme =
-            e.Value ? AppTheme.Dark : AppTheme.Light;
+        Preferences.Set("dark_mode", e.Value);
+
+        var theme = e.Value ? AppTheme.Dark : AppTheme.Light;
+
+        Application.Current!.UserAppTheme = theme;
     }
 
     private async void OnSave(object sender, EventArgs e)
@@ -36,16 +39,12 @@ public partial class SettingsPage : ContentPage
             Preferences.Set("daily_goal", goal);
         }
 
-        Preferences.Set(
-            "dark_mode",
-            SwitchDarkMode.IsToggled);
+        Preferences.Set("dark_mode", SwitchDarkMode.IsToggled);
 
-        DisplayAlert(
+        await DisplayAlert(
             "Готово",
             "Настройки сохранены",
             "OK");
-
-        await Shell.Current.GoToAsync("..");
     }
 
     private async void OnClearData(object sender, EventArgs e)

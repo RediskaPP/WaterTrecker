@@ -20,7 +20,7 @@
             <ShellContent Route="history"
                   ContentTemplate="{DataTemplate pages:HistoryPage}"/>
         </Tab>
-        <Tab Title="Настиройки">
+        <Tab Title="Настройки">
             <ShellContent Route="settings"
                 ContentTemplate="{DataTemplate pages:SettingsPage}"/>
         </Tab>

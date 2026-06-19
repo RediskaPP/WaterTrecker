@@ -3,27 +3,22 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
 
-    <Color x:Key="Primary">#1A9BE8</Color>
-    <Color x:Key="PrimaryDark">#1178C2</Color>
-    <Color x:Key="PrimaryLight">#60BFFF</Color>
-    <Color x:Key="Accent">#00D4FF</Color>
-    <Color x:Key="Background">#F0F8FF</Color>
-    <Color x:Key="Surface">#FFFFFF</Color>
-    <Color x:Key="SurfaceTint">#E8F4FD</Color>
-    <Color x:Key="TextPrimary">#0D2B45</Color>
-    <Color x:Key="TextSecondary">#5A87A8</Color>
-    <Color x:Key="TextHint">#9BBFD8</Color>
-    <Color x:Key="Danger">#E05A6A</Color>
-    <Color x:Key="DangerLight">#FDEEF0</Color>
-    <Color x:Key="Divider">#D6EAF8</Color>
-
+    <!-- ContentPage фон -->
     <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor" Value="{StaticResource Background}"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#F0F8FF" Dark="#0D1B2A"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- Display — большие числа / заголовок дня -->
     <Style x:Key="DisplayLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="40"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
@@ -31,7 +26,11 @@
 
     <!-- Section header -->
     <Style x:Key="SectionLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#5A87A8" Dark="#7AABCC"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="CharacterSpacing" Value="1.5"/>
@@ -41,28 +40,48 @@
 
     <!-- Body -->
     <Style x:Key="BodyLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
     <!-- Caption / hint -->
     <Style x:Key="CaptionLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#5A87A8" Dark="#7AABCC"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="12"/>
     </Style>
 
     <!-- Subtle hint / empty state -->
     <Style x:Key="HintLabel" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource TextHint}"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#9BBFD8" Dark="#3D6480"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
-
+    <!-- Card -->
     <Style x:Key="Card" TargetType="Border">
-        <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="StrokeShape" Value="RoundRectangle 16"/>
-        <Setter Property="Stroke" Value="{StaticResource Divider}"/>
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <AppThemeBinding Light="#D6EAF8" Dark="#1E3347"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="StrokeThickness" Value="1"/>
         <Setter Property="Padding" Value="20"/>
         <Setter Property="Shadow">
@@ -72,36 +91,67 @@
         </Setter>
     </Style>
 
+    <!-- ProgressBar -->
     <Style TargetType="ProgressBar">
-        <Setter Property="ProgressColor" Value="{StaticResource Primary}"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource SurfaceTint}"/>
+        <Setter Property="ProgressColor" Value="#1A9BE8"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#E8F4FD" Dark="#1C2F42"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="HeightRequest" Value="10"/>
         <Setter Property="Margin" Value="0,4"/>
     </Style>
 
+    <!-- Slider -->
     <Style TargetType="Slider">
-        <Setter Property="MinimumTrackColor" Value="{StaticResource Primary}"/>
-        <Setter Property="MaximumTrackColor" Value="{StaticResource SurfaceTint}"/>
-        <Setter Property="ThumbColor" Value="{StaticResource PrimaryDark}"/>
+        <Setter Property="MinimumTrackColor" Value="#1A9BE8"/>
+        <Setter Property="MaximumTrackColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#E8F4FD" Dark="#1C2F42"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ThumbColor" Value="#1178C2"/>
     </Style>
 
+    <!-- Entry -->
     <Style TargetType="Entry">
-        <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
-        <Setter Property="PlaceholderColor" Value="{StaticResource TextHint}"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PlaceholderColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#9BBFD8" Dark="#3D6480"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
+    <!-- TimePicker -->
     <Style TargetType="TimePicker">
-        <Setter Property="TextColor" Value="{StaticResource TextPrimary}"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource Surface}"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
-
-    <!-- Primary CTA -->
+    <!-- Primary Button -->
     <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+        <Setter Property="BackgroundColor" Value="#1A9BE8"/>
         <Setter Property="TextColor" Value="White"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="FontSize" Value="15"/>
@@ -114,10 +164,18 @@
         </Setter>
     </Style>
 
-    <!-- Quick-add chip -->
+    <!-- ChipButton -->
     <Style x:Key="ChipButton" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource SurfaceTint}"/>
-        <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#E8F4FD" Dark="#1C2F42"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#1A9BE8" Dark="#60BFFF"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="CornerRadius" Value="12"/>
@@ -130,10 +188,18 @@
         </Setter>
     </Style>
 
-    <!-- Delete / danger icon button -->
+    <!-- DangerIconButton -->
     <Style x:Key="DangerIconButton" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource DangerLight}"/>
-        <Setter Property="TextColor" Value="{StaticResource Danger}"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#FDEEF0" Dark="#2A1520"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#E05A6A" Dark="#FF6B7A"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="CornerRadius" Value="10"/>

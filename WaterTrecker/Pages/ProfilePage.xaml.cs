@@ -33,13 +33,22 @@ public partial class ProfilePage : ContentPage
             BadgeLayout.Children.Add(CreateBadge("🥉 Первые 500 мл НЕ ПЛОХ"));
 
         if (total >= 1000)
-            BadgeLayout.Children.Add(CreateBadge("🥈 1 литр МЕГА ХОРОШЬ"));
+            BadgeLayout.Children.Add(CreateBadge("🥈 1 литр МЕГА ХОРОШЪ"));
 
         if (total >= 2500)
             BadgeLayout.Children.Add(CreateBadge("🥇 Норма дня УЛЬРА ЗАЧЕТ"));
 
         if (total >= 4000)
             BadgeLayout.Children.Add(CreateBadge("🏆 Гидратор МЕГА УВАЖУХА"));
+
+        if (total >= 6000)
+            BadgeLayout.Children.Add(CreateBadge("🏆 6 литров АЙ ТИГР"));
+
+        if (total >= 10000)
+            BadgeLayout.Children.Add(CreateBadge("🏆 10 литров ГИДРОНАСОСИЩЕ"));
+
+        if (total >= 15000)
+            BadgeLayout.Children.Add(CreateBadge("🏆 15 литров БУЛЬБУЛЯТОР"));
     }
 
     private Frame CreateBadge(string text)
