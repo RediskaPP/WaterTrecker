@@ -40,24 +40,19 @@
 
                     <!-- Разделитель -->
                     <BoxView HeightRequest="1"
-                             Color="#D6EAF8"
+                             Color="{AppThemeBinding Light=#D6EAF8, Dark=#1E3347}"
                              Margin="0,4"/>
 
                     <!-- Ввод вручную -->
                     <Label Text="Или введите точное значение"
                            Style="{StaticResource CaptionLabel}"/>
 
-                    <Border BackgroundColor="#F0F8FF"
-                            StrokeShape="RoundRectangle 12"
-                            Stroke="#D6EAF8"
-                            StrokeThickness="1"
-                            Padding="14,0">
+                    <Border Style="{StaticResource InputBorder}">
                         <Entry x:Name="EntryAmount"
                                Placeholder="например, 330"
                                Keyboard="Numeric"
                                TextChanged="OnEntryChanged"
-                               HeightRequest="48"
-                               BackgroundColor="Transparent"/>
+                               HeightRequest="48"/>
                     </Border>
 
                 </VerticalStackLayout>
@@ -76,20 +71,13 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border BackgroundColor="White"
-                                StrokeShape="RoundRectangle 14"
-                                Stroke="#D6EAF8"
-                                StrokeThickness="1.5"
-                                Padding="14,10"
-                                WidthRequest="72">
+                        <Border Style="{StaticResource DrinkCardBorder}">
                             <VerticalStackLayout Spacing="4">
                                 <Label Text="{Binding Icon}"
                                        FontSize="26"
                                        HorizontalTextAlignment="Center"/>
                                 <Label Text="{Binding Name}"
-                                       FontSize="11"
-                                       TextColor="#5A87A8"
-                                       HorizontalTextAlignment="Center"/>
+                                       Style="{StaticResource DrinkNameLabel}"/>
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
@@ -100,11 +88,7 @@
             <Label Text="Время"
                    Style="{StaticResource SectionLabel}"/>
 
-            <Border BackgroundColor="White"
-                    StrokeShape="RoundRectangle 14"
-                    Stroke="#D6EAF8"
-                    StrokeThickness="1"
-                    Padding="16,4">
+            <Border Style="{StaticResource Card}" Padding="16,4">
                 <Grid ColumnDefinitions="Auto,*">
                     <Label Grid.Column="0"
                            Text="🕐"

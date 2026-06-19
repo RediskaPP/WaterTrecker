@@ -24,18 +24,13 @@
                            FontAttributes="Bold"/>
                     <Label Text="Рекомендуемая норма — 2000–2500 мл в день"
                            Style="{StaticResource CaptionLabel}"/>
-                    <Border BackgroundColor="#F0F8FF"
-                            StrokeShape="RoundRectangle 12"
-                            Stroke="#D6EAF8"
-                            StrokeThickness="1"
-                            Padding="14,0"
-                            Margin="0,4,0,0">
+
+                    <Border Style="{StaticResource InputBorder}" Margin="0,4,0,0">
                         <Grid ColumnDefinitions="*,Auto">
                             <Entry Grid.Column="0"
                                    x:Name="EntryGoal"
                                    Keyboard="Numeric"
                                    Placeholder="2000"
-                                   BackgroundColor="Transparent"
                                    HeightRequest="50"/>
                             <Label Grid.Column="1"
                                    Text="мл"
@@ -76,18 +71,18 @@
                    Style="{StaticResource SectionLabel}"
                    Margin="0,8,0,0"/>
 
-            <Border BackgroundColor="#FDEEF0"
+            <Border BackgroundColor="{AppThemeBinding Light=#FDEEF0, Dark=#2A1520}"
                     StrokeShape="RoundRectangle 16"
-                    Stroke="#F5C6CB"
+                    Stroke="{AppThemeBinding Light=#F5C6CB, Dark=#4A2530}"
                     StrokeThickness="1"
                     Padding="20">
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Очистить все записи"
-                           TextColor="#0D2B45"
+                           TextColor="{AppThemeBinding Light=#0D2B45, Dark=#E8F4FD}"
                            FontSize="15"
                            FontAttributes="Bold"/>
                     <Label Text="Это действие удалит всю историю потребления воды. Отменить нельзя."
-                           TextColor="#8B4A54"
+                           TextColor="{AppThemeBinding Light=#8B4A54, Dark=#D49AA3}"
                            FontSize="13"/>
                     <Button Text="Удалить все данные"
                             Clicked="OnClearData"

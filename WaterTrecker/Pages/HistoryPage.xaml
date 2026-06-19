@@ -24,8 +24,6 @@
                     <DatePicker Grid.Column="1"
                                 x:Name="DatePickerHistory"
                                 DateSelected="OnDateSelected"
-                                TextColor="#0D2B45"
-                                BackgroundColor="Transparent"
                                 HeightRequest="50"/>
                 </Grid>
             </Border>
@@ -59,28 +57,11 @@
             <CollectionView x:Name="HistoryList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border Margin="0,0,0,10"
-                                BackgroundColor="White"
-                                StrokeShape="RoundRectangle 14"
-                                Stroke="#D6EAF8"
-                                StrokeThickness="1"
-                                Padding="14,12">
-                            <Border.Shadow>
-                                <Shadow Brush="#1A1A9BE8"
-                                        Offset="0,3"
-                                        Radius="8"
-                                        Opacity="0.1"/>
-                            </Border.Shadow>
-
+                        <Border Style="{StaticResource LogRow}">
                             <Grid ColumnDefinitions="44,*,Auto" ColumnSpacing="12">
 
-                                <!-- Иконка в кружке -->
-                                <Border Grid.Column="0"
-                                        BackgroundColor="#E8F4FD"
-                                        StrokeShape="RoundRectangle 12"
-                                        StrokeThickness="0"
-                                        HeightRequest="44"
-                                        WidthRequest="44">
+                                <!-- Иконка -->
+                                <Border Grid.Column="0" Style="{StaticResource IconCircle}">
                                     <Label Text="{Binding Icon}"
                                            FontSize="22"
                                            HorizontalTextAlignment="Center"
@@ -92,12 +73,10 @@
                                                      VerticalOptions="Center"
                                                      Spacing="2">
                                     <Label Text="{Binding DrinkType}"
-                                           TextColor="#0D2B45"
-                                           FontSize="15"
+                                           Style="{StaticResource BodyLabel}"
                                            FontAttributes="Bold"/>
                                     <Label Text="{Binding Timestamp}"
-                                           TextColor="#5A87A8"
-                                           FontSize="12"/>
+                                           Style="{StaticResource CaptionLabel}"/>
                                 </VerticalStackLayout>
 
                                 <!-- Объём -->

@@ -2,8 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-
-    <!-- ContentPage фон -->
+    <!-- Фон страницы -->
     <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor">
             <Setter.Value>
@@ -12,7 +11,7 @@
         </Setter>
     </Style>
 
-    <!-- Display — большие числа / заголовок дня -->
+    <!-- Крупные числа / заголовок дня -->
     <Style x:Key="DisplayLabel" TargetType="Label">
         <Setter Property="TextColor">
             <Setter.Value>
@@ -24,7 +23,7 @@
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
-    <!-- Section header -->
+    <!-- Заголовок секции -->
     <Style x:Key="SectionLabel" TargetType="Label">
         <Setter Property="TextColor">
             <Setter.Value>
@@ -38,7 +37,7 @@
         <Setter Property="Margin" Value="0,8,0,4"/>
     </Style>
 
-    <!-- Body -->
+    <!-- Основной текст -->
     <Style x:Key="BodyLabel" TargetType="Label">
         <Setter Property="TextColor">
             <Setter.Value>
@@ -48,7 +47,7 @@
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
-    <!-- Caption / hint -->
+    <!-- Подпись / вторичный текст -->
     <Style x:Key="CaptionLabel" TargetType="Label">
         <Setter Property="TextColor">
             <Setter.Value>
@@ -58,7 +57,7 @@
         <Setter Property="FontSize" Value="12"/>
     </Style>
 
-    <!-- Subtle hint / empty state -->
+    <!-- Подсказка / пустое состояние -->
     <Style x:Key="HintLabel" TargetType="Label">
         <Setter Property="TextColor">
             <Setter.Value>
@@ -69,7 +68,7 @@
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
-    <!-- Card -->
+    <!-- Карточка -->
     <Style x:Key="Card" TargetType="Border">
         <Setter Property="BackgroundColor">
             <Setter.Value>
@@ -91,7 +90,24 @@
         </Setter>
     </Style>
 
-    <!-- ProgressBar -->
+    <!-- Обёртка для полей ввода -->
+    <Style x:Key="InputBorder" TargetType="Border">
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#F0F8FF" Dark="#1C2F42"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <AppThemeBinding Light="#D6EAF8" Dark="#2A4258"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Padding" Value="14,0"/>
+    </Style>
+
+    <!-- Прогресс бар -->
     <Style TargetType="ProgressBar">
         <Setter Property="ProgressColor" Value="#1A9BE8"/>
         <Setter Property="BackgroundColor">
@@ -103,7 +119,7 @@
         <Setter Property="Margin" Value="0,4"/>
     </Style>
 
-    <!-- Slider -->
+    <!-- Слайдер -->
     <Style TargetType="Slider">
         <Setter Property="MinimumTrackColor" Value="#1A9BE8"/>
         <Setter Property="MaximumTrackColor">
@@ -114,13 +130,9 @@
         <Setter Property="ThumbColor" Value="#1178C2"/>
     </Style>
 
-    <!-- Entry -->
+    <!-- Поле ввода -->
     <Style TargetType="Entry">
-        <Setter Property="BackgroundColor">
-            <Setter.Value>
-                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="TextColor">
             <Setter.Value>
                 <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
@@ -128,28 +140,35 @@
         </Setter>
         <Setter Property="PlaceholderColor">
             <Setter.Value>
-                <AppThemeBinding Light="#9BBFD8" Dark="#3D6480"/>
+                <AppThemeBinding Light="#9BBFD8" Dark="#7AABCC"/>
             </Setter.Value>
         </Setter>
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
-    <!-- TimePicker -->
+    <!-- Выбор времени -->
     <Style TargetType="TimePicker">
         <Setter Property="TextColor">
             <Setter.Value>
                 <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
             </Setter.Value>
         </Setter>
-        <Setter Property="BackgroundColor">
-            <Setter.Value>
-                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
-    <!-- Primary Button -->
+    <!-- Выбор даты -->
+    <Style TargetType="DatePicker">
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#0D2B45" Dark="#E8F4FD"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+
+    <!-- Основная кнопка -->
     <Style TargetType="Button">
         <Setter Property="BackgroundColor" Value="#1A9BE8"/>
         <Setter Property="TextColor" Value="White"/>
@@ -164,7 +183,7 @@
         </Setter>
     </Style>
 
-    <!-- ChipButton -->
+    <!-- Кнопка-чип -->
     <Style x:Key="ChipButton" TargetType="Button">
         <Setter Property="BackgroundColor">
             <Setter.Value>
@@ -188,7 +207,7 @@
         </Setter>
     </Style>
 
-    <!-- DangerIconButton -->
+    <!-- Кнопка удаления -->
     <Style x:Key="DangerIconButton" TargetType="Button">
         <Setter Property="BackgroundColor">
             <Setter.Value>
@@ -211,6 +230,101 @@
                 <Shadow Brush="Transparent" Offset="0,0" Radius="0" Opacity="0"/>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!-- Карточка напитка в выборе типа -->
+    <Style x:Key="DrinkCardBorder" TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 14"/>
+        <Setter Property="StrokeThickness" Value="2"/>
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="WidthRequest" Value="72"/>
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <AppThemeBinding Light="#D6EAF8" Dark="#1E3347"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor">
+                                <Setter.Value>
+                                    <AppThemeBinding Light="#E8F4FD" Dark="#1C3A52"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Stroke" Value="#1A9BE8"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- Название напитка в карточке -->
+    <Style x:Key="DrinkNameLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#5A87A8" Dark="#7AABCC"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="#1A9BE8"/>
+                            <Setter Property="FontAttributes" Value="Bold"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- Строка записи -->
+    <Style x:Key="LogRow" TargetType="Border">
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#FFFFFF" Dark="#152232"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeShape" Value="RoundRectangle 14"/>
+        <Setter Property="Stroke">
+            <Setter.Value>
+                <AppThemeBinding Light="#D6EAF8" Dark="#1E3347"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Padding" Value="14,12"/>
+        <Setter Property="Margin" Value="0,0,0,10"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#1A1A9BE8" Offset="0,3" Radius="8" Opacity="0.1"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Иконка в кружке -->
+    <Style x:Key="IconCircle" TargetType="Border">
+        <Setter Property="BackgroundColor">
+            <Setter.Value>
+                <AppThemeBinding Light="#E8F4FD" Dark="#1C2F42"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+        <Setter Property="StrokeThickness" Value="0"/>
+        <Setter Property="HeightRequest" Value="44"/>
+        <Setter Property="WidthRequest" Value="44"/>
     </Style>
 
 </ResourceDictionary>
